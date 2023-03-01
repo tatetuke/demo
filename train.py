@@ -1,7 +1,6 @@
 '''
 reference
 https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py
-
 '''
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '3'
@@ -21,12 +20,8 @@ from tqdm import tqdm
 import setting as setting
 
 #データセットのファイル名
-# TRAIN_DATA_FILE_NAME = "XYdata.csv"
-# TEST_DATA_FILE_NAME = "XYdata_test.csv"
-# NET_PATH = './CNN.pth'
-TRAIN_DATA_FILE_NAME ="fesTrain.csv"
-TEST_DATA_FILE_NAME = "fesTrain.csv"
-NET_PATH = "fes.pth"
+TRAIN_DATA_FILE_NAME ="TrainSet.csv"
+NET_PATH = "network.pth"
 SUB_DATA=setting.SUB_DATA
 
 
@@ -53,49 +48,9 @@ class Net(nn.Module):
         x = self.pool(F.relu(self.conv2(x)))
         x = torch.flatten(x, 1)  # flatten all dimensions except batch
         x = F.relu(self.fc1(x))
-        # x = F.relu(self.fc2(x))
         x = self.fc3(x)
         return x
       
-#subdata:20      
-# class Net(nn.Module):
-#     def __init__(self):
-#         super().__init__()
-#         self.conv1 = nn.Conv2d(3, 6, 5)
-#         self.pool = nn.MaxPool2d(2, 2)
-#         self.conv2 = nn.Conv2d(6, 12, 5)
-#         self.fc1 = nn.Linear(3000, 120)#入力サイズを変えた
-#         self.fc3 = nn.Linear(120, 2)#出力サイズを変えた
-
-#     def forward(self, x):
-#         x = self.pool(F.relu(self.conv1(x)))
-#         x = self.pool(F.relu(self.conv2(x)))
-#         x = torch.flatten(x, 1)  # flatten all dimensions except batch
-#         x = F.relu(self.fc1(x))
-#         # x = F.relu(self.fc2(x))
-#         x = self.fc3(x)
-#         return x
-
-#subdata:0
-# class Net(nn.Module):
-#     def __init__(self):
-#         super().__init__()
-#         self.conv1 = nn.Conv2d(3, 6, 5)
-#         self.pool = nn.MaxPool2d(2, 2)
-#         self.conv2 = nn.Conv2d(6, 12, 5)
-#         self.fc1 = nn.Linear(10500, 120)#入力サイズを変えた
-#         self.fc3 = nn.Linear(120, 2)#出力サイズを変えた
-
-#     def forward(self, x):
-#         x = self.pool(F.relu(self.conv1(x)))
-#         x = self.pool(F.relu(self.conv2(x)))
-#         x = torch.flatten(x, 1)  # flatten all dimensions except batch
-#         x = F.relu(self.fc1(x))
-#         # x = F.relu(self.fc2(x))
-#         x = self.fc3(x)
-    
-#         return x
-
 
 class MyDataset(torch.utils.data.Dataset):
 
@@ -234,36 +189,6 @@ if __name__ == '__main__':
         net.load_state_dict(torch.load(NET_PATH))
         device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         net.to(device)
-
-
-    # ----------
-    #  Test
-    # ----------
-
-
-    # print("Load Test Data")
-    # testset=MyDataset(file_path=TRAIN_DATA_FILE_NAME,
-    #                             transform=transforms.ToTensor(),out1vec=False)
-    # testloader = torch.utils.data.DataLoader(testset, batch_size=BATCH_SIZE,
-    #                                      shuffle=False, num_workers=2)
-
-    # correct = 0
-    # total = 0
-    # # since we're not training, we don't need to calculate the gradients for our outputs
-    # with torch.no_grad():
-    #     for data in testloader:
-    #         inputs, labels = data[0].to(device),data[1].to(device)
-
-    #          #データがdouble型になっているのでfloat型に変換
-    #         inputs=inputs.float()
-    #         # labels=labels.float()
-
-    #         # calculate outputs by running images through the network
-    #         outputs = net(inputs)
-    #         # the class with the highest energy is what we choose as prediction
-    #         _, predicted=torch.max(outputs.data,1)
-    #         print('Predicted: ', ' '.join(f'{classes[predicted[j]]:5s}'
-    #                         for j in range(len(predicted)))) 
 
 
 

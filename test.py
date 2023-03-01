@@ -3,25 +3,23 @@ import scipy.io.wavfile
 import torch
 import torchvision.transforms as transforms
 import scipy.io.wavfile
-import torch.nn as nn
-import torch.nn.functional as F
 import librosa
 import librosa.display
 import torchvision.transforms as transforms
 import pyaudio
-import matplotlib.pyplot as plt
 import wave
-import cv2
 import torch
 import setting
-import fesTrain as ftrain
-import time
-chunk = 1024
+import train as ftrain
+
+MUSIC_FILES=['img/audio/a/ベース2.wav','img/audio/a/ピアノ.wav','img/audio/a/ギター5.wav','img/audio/a/シンバル1.wav']
+
+
 FORMAT = pyaudio.paInt16
+chunk = 1024
 RATE = 44100
 RECORD_SECONDS = 0.25
 DEVICE_INDEX = 1
-LABEL = 0
 WRITE_CSV_FILE="fes.csv"
 NET_PATH = "fes.pth"
 threshold = 0.1#閾値
@@ -31,7 +29,6 @@ SUB_DATA=setting.SUB_DATA
 
 BATCH_SIZE=ftrain.BATCH_SIZE
 FILES=['AUDIO_C0.wav','AUDIO_C1.wav','AUDIO_C2.wav']
-MUSIC_FILES=['img/audio/a/ベース2.wav','img/audio/a/ピアノ.wav','img/audio/a/ギター5.wav','img/audio/a/シンバル1.wav']
 
 class MyDataset(torch.utils.data.Dataset):
 

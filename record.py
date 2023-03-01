@@ -3,20 +3,14 @@
 ###
 import struct
 import pyaudio
-import matplotlib.pyplot as plot
-import matplotlib.pyplot as plt
 import csv
-import numpy
 import numpy as np
 import librosa
 import librosa.display
 from datetime import datetime
 import wave
 
-# 音データフォーマット
-# https://qiita.com/lilacs/items/a331a8933ec135f63ab1
-# https://qiita.com/mix_dvd/items/dc53926b83a9529876f7
-# chunk = 1024#録音する秒数に関わる
+
 chunk = 1024#録音する秒数に関わる
 FORMAT = pyaudio.paInt16
 RATE = 44100
@@ -33,11 +27,9 @@ RECORD_NUM = 100
 
 # 閾値
 threshold = 0.05
-WRITE_CSV_FILE = "fesTrain.csv"
-SAVE_AUDIO_FOLDER = "./data/fesTrain"
+WRITE_CSV_FILE = "TrainSet.csv"
+SAVE_AUDIO_FOLDER = "./data/TrainingData"
 
-# WRITE_CSV_FILE = "test_grid_point2.csv"
-# SAVE_AUDIO_FOLDER = "./data/test_grid_point2"
 
 # 入力チャネル
 CHANNEL =3
