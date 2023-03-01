@@ -19,7 +19,6 @@ import argparse
 import torch.optim as optim
 from tqdm import tqdm
 import setting as setting
-import mymixup as Datasets
 
 #データセットのファイル名
 # TRAIN_DATA_FILE_NAME = "XYdata.csv"
