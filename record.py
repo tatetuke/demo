@@ -75,7 +75,8 @@ if __name__ == '__main__':
     print("収集する学習データのラベルを、0,1,2,3の中から入力して下ださい。")
     while LABEL == -INF:
         LABLE = int(input())
-        if LABEL not in [0,1,2,3]:
+        print(LABLE)
+        if LABEL not in np.array(0,1,2,3):
             print("0,1,2,3以外の値が入力されました。")
             print("入力するラベルの値は「0,1,2,3」のいずれかです。")
             LABEL=-INF
