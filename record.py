@@ -11,13 +11,13 @@ from datetime import datetime
 import wave
 import setting
 
-LABEL = -INF
 chunk = 1024#録音する秒数に関わる
 FORMAT = pyaudio.paInt16
 RATE = 44100
 RECORD_SECONDS = 0.25
 DEVICE_INDEX = 1
 INF=100000000
+LABEL = -INF
 RECORD_NUM = setting.RECORD_NUM
 
 # 閾値
