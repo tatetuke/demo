@@ -11,7 +11,7 @@ from datetime import datetime
 import wave
 import setting
 
-LABEL = setting.CLASS_LABEL
+LABEL = -INF
 chunk = 1024#録音する秒数に関わる
 FORMAT = pyaudio.paInt16
 RATE = 44100
@@ -72,11 +72,15 @@ def max_vol(data):
 if __name__ == '__main__':
     (audio, stream) = audiostart(CHANNEL)
     cnt = 0
-    print("収集する学習データのラベルを入力して下ださい")
-    t = -1
-    while (t == -1):
-        t = int(input())
-    LABEL=t
+    print("収集する学習データのラベルを、0,1,2,3の中から入力して下ださい。")
+    while LABEL == -INF:
+        LABLE = int(input())
+        if LABEL not in [0,1,2,3]:
+            print("0,1,2,3以外の値が入力されました。")
+            print("入力するラベルの値は「0,1,2,3」のいずれかです。")
+            LABEL=-INF
+            print("再入力して下さい。")
+    
     print("CLASS_LABEL:",LABEL)
 
     while True:
