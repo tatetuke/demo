@@ -1,29 +1,11 @@
-#データセットのファイル名
-# TRAIN_DATA_FILE_NAME = "XYdata.csv"
-# TEST_DATA_FILE_NAME = "XYdata_test.csv"
-TRAIN_DATA_FILE_NAME = "train2.csv"
-# TRAIN_DATA_FILE_NAME = "train2_8cm.csv"
-# TEST_DATA_FILE_NAME = "test_random.csv"
-TEST_DATA_FILE_NAME = "test_random2.csv"
-# TEST_DATA_FILE_NAME = "test_grid_point.csv"
-# TEST_DATA_FILE_NAME = "test_grid_point2.csv"
+#チューニング時に叩くマスのラベル。
+CLASS_LABEL=0
 
-NET_PATH = './CNN.pth'
+#record.pyを実行して録るデータの数
+RECORD_NUM=100
 
-ALPHA = 0.25 # 細かい分け方
-DIST=2  # 何センチ間隔でデータを取ったか
-RATE = 44100
+#デモで流れる楽器の効果音のファイル。左からラベル0,1,2,3に紐づけされている。
+I_FILES=['audio/ベース2.wav','audio/ピアノ.wav','audio/ギター5.wav','audio/シンバル1.wav']
 
-# 座標ラベルの最小距離
-MIN_DIST = 4 #MixupとBilinearMixupに影響する4
-MIN_DIST2 = 32 #MixupとBilinearMixupに影響する4
-
-X_MAX=8
-Y_MAX=8
-
-# SUB_DATA=20
-SUB_DATA=25
-
-
-
-
+#デモでマイクが頻繁に誤反応する場合、値を上げる。(0~1の範囲、デフォルト=0.1)
+THRESHOLD=0.1

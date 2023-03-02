@@ -17,12 +17,11 @@ import pandas as pd
 import argparse
 import torch.optim as optim
 from tqdm import tqdm
-import setting
 
 #データセットのファイル名
 TRAIN_DATA_FILE_NAME ="TrainSet.csv"
 NET_PATH = "network.pth"
-SUB_DATA=setting.SUB_DATA
+SUB_DATA=25
 
 
 #ネットワークのパラメーター

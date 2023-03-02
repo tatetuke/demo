@@ -11,8 +11,9 @@ import wave
 import torch
 import setting
 import train as ftrain
+import setting
 
-MUSIC_FILES=['audio/ベース2.wav','audio/ピアノ.wav','audio/ギター5.wav','audio/シンバル1.wav']
+MUSIC_FILES=setting.AUDIO_FILES
 
 
 FORMAT = pyaudio.paInt16
@@ -21,10 +22,10 @@ RATE = 44100
 RECORD_SECONDS = 0.25
 DEVICE_INDEX = 1
 NET_PATH = "network.pth"
-threshold = 0.1#閾値
+threshold = setting.THRESHOLD#閾値
 CHANNEL = 3#入力チャネル
 INF=1000000000000000000
-SUB_DATA=setting.SUB_DATA
+SUB_DATA=25
 
 BATCH_SIZE=ftrain.BATCH_SIZE
 FILES=['AUDIO_C0.wav','AUDIO_C1.wav','AUDIO_C2.wav']
@@ -122,19 +123,7 @@ def FILE2DATA(files):
         indata.append(indata2)
     datas.append(indata)
     rates.append(rate)
-    # indata=[]
-    #     for i in range(len(amps[0])):
-    #         indata2=[]
-    #         for j in range(len(amps[0][0])-SUB_DATA):
-    #             indata3=[]
-    #             for c in range(len(amps)):
-    #                 indata3.append(amps[c][i][j])
-    #             indata2.append(indata3)
-    #         indata.append(indata2)
-    #     datas.append(indata)
-    #     rates.append(rate)
 
-    # return np.array(datas), rates[0]
     return np.array(datas), 1
 
 
@@ -221,27 +210,17 @@ if __name__ == '__main__':
     #  Test
     # ----------
             testset=MyDataset(transform=transforms.ToTensor())
-            # testloader = torch.utils.data.DataLoader(testset, batch_size=BATCH_SIZE,
-            #                             shuffle=False, num_workers=2,persistent_workers=True)
-            # testloader = DataLoader(testset, batch_size=BATCH_SIZE,
-            #                             shuffle=False)
+
             
             with torch.no_grad():
-                # for data in testloader:
-                    # inputs, labels = data[0].to(device),data[1].to(device)
-                    # print(inputs)
                 inputs=torch.tensor(np.array([testset.data[0],testset.data[0],testset.data[0],testset.data[0]]), dtype=torch.float64)
-
-                
 
                 #データがdouble型になっているのでfloat型に変換
                 inputs=inputs.float()
                 
-                # labels=labels.float()
-                
-                
                 # calculate outputs by running images through the network
                 outputs = net(inputs)
+                
                 # the class with the highest energy is what we choose as prediction
                 _, predicted=torch.max(outputs.data,1)
                 

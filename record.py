@@ -9,34 +9,26 @@ import librosa
 import librosa.display
 from datetime import datetime
 import wave
+import setting
 
-
+LABEL = setting.CLASS_LABEL
 chunk = 1024#録音する秒数に関わる
 FORMAT = pyaudio.paInt16
 RATE = 44100
 RECORD_SECONDS = 0.25
 DEVICE_INDEX = 1
-
 INF=100000000
-
-LABEL = 3
-
-
-
-RECORD_NUM = 100
+RECORD_NUM = setting.RECORD_NUM
 
 # 閾値
 threshold = 0.05
 WRITE_CSV_FILE = "TrainSet.csv"
 SAVE_AUDIO_FOLDER = "./data"
 
-
 # 入力チャネル
 CHANNEL =3
 
 #　音の読み込みを開始
-
-
 def audiostart(channel):
     audio = pyaudio.PyAudio()
     stream = audio.open(format=FORMAT,
@@ -49,13 +41,10 @@ def audiostart(channel):
     return audio, stream
 
 # 音の読み込みを中断
-
-
 def audiostop(audio, stream):
     stream.stop_stream()
     stream.close()
     audio.terminate()
-
 
 # 複数のマイクデータから一つのマイクを抽出する
 # data:音データ、channel:チャンネル数
@@ -64,11 +53,9 @@ def extract_mic(data, s,record_start=-1,record_end=INF):
     for i in range(len(data)):
         if i<record_start:continue
         if i>len(data)-record_end:break
-
-        if i % (2*CHANNEL) != 2*s and i % (2*CHANNEL) != 2*s+1:
-            continue
+        if i % (2*CHANNEL) != 2*s and i % (2*CHANNEL) != 2*s+1:continue
         ret.append(data[i])
-    print(len(data))
+    # print(len(data))
     return bytes(ret)
 
 def max_vol(data):
@@ -85,7 +72,11 @@ def max_vol(data):
 if __name__ == '__main__':
     (audio, stream) = audiostart(CHANNEL)
     cnt = 0
-    print("x,y:",LABEL)
+    print("ラベルを入力して下ださい")
+    t = -1
+    while (t == -1):
+        t = input()
+    print("CLASS_LABEL:",LABEL)
 
     while True:
         try:
@@ -97,7 +88,7 @@ if __name__ == '__main__':
             if x.max() > threshold:
                 record_start,record_endsub=max_vol(x)
                 filename = datetime.today().strftime("%Y%m%d_%H%M%S")
-                print(filename)
+                # print(filename)
                 # 音データを入れる配列を初期化
                 all = []
                 all.append(data)
@@ -135,7 +126,6 @@ if __name__ == '__main__':
                 if cnt == RECORD_NUM:
                     break
                 print(cnt)
-
 
         except KeyboardInterrupt:
             break
