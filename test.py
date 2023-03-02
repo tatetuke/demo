@@ -12,7 +12,7 @@ import torch
 import setting
 import train as ftrain
 
-MUSIC_FILES=['img/audio/a/ベース2.wav','img/audio/a/ピアノ.wav','img/audio/a/ギター5.wav','img/audio/a/シンバル1.wav']
+MUSIC_FILES=['audio/ベース2.wav','audio/ピアノ.wav','audio/ギター5.wav','audio/シンバル1.wav']
 
 
 FORMAT = pyaudio.paInt16

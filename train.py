@@ -103,7 +103,7 @@ def FILE2DATA(files):
                 data, n_fft=fft_size, hop_length=hop_length))
             amps.append(np.array(amplitude))
         
-        #HACK:NCHWをNHWCに書き替える。もっと簡潔な書き方があるlinearprobing
+        #HACK:NCHWをNHWCに書き替え
         indata=[]
         for i in range(len(amps[0])):
             indata2=[]
