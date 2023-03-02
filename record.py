@@ -74,9 +74,9 @@ if __name__ == '__main__':
     cnt = 0
     print("収集する学習データのラベルを、0,1,2,3の中から入力して下ださい。")
     while True:
-        LABLE = int(input())
-        print(type(LABEL))
-        if LABEL in [int(0),int(1),int(2),int(3)]:
+        t = int(input())
+        if t in [int(0),int(1),int(2),int(3)]:
+            LABEL =t
             print("a")
             break
         print("0,1,2,3以外の値が入力されました。")
