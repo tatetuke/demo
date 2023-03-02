@@ -76,7 +76,7 @@ if __name__ == '__main__':
     while LABEL == -INF:
         LABLE = int(input())
         print(type(LABEL))
-        if not (LABEL in [0,1,2,3]):
+        if not (LABEL in [int(0),int(1),int(2),int(3)]):
             print("0,1,2,3以外の値が入力されました。")
             print("入力するラベルの値は「0,1,2,3」のいずれかです。")
             LABEL=-INF
