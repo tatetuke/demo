@@ -76,6 +76,7 @@ if __name__ == '__main__':
     t = -1
     while (t == -1):
         t = int(input())
+    LABEL=t
     print("CLASS_LABEL:",LABEL)
 
     while True:
