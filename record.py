@@ -77,10 +77,9 @@ if __name__ == '__main__':
         t = int(input())
         if t in [int(0),int(1),int(2),int(3)]:
             LABEL =t
-            print("a")
             break
         print("0,1,2,3以外の値が入力されました。")
-        print("入力するラベルの値は「0,1,2,3」のいずれかです。")
+        print("入力可能なラベルは「0,1,2,3」のいずれかです。")
         print("再入力して下さい。")
     
     print("CLASS_LABEL:",LABEL)

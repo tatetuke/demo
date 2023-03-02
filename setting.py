@@ -1,6 +1,3 @@
-#チューニング時に叩くマスのラベル。
-CLASS_LABEL=0
-
 #record.pyを実行して録るデータの数
 RECORD_NUM=100
 
