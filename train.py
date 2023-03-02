@@ -17,7 +17,7 @@ import pandas as pd
 import argparse
 import torch.optim as optim
 from tqdm import tqdm
-import setting as setting
+import setting
 
 #データセットのファイル名
 TRAIN_DATA_FILE_NAME ="TrainSet.csv"

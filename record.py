@@ -28,7 +28,7 @@ RECORD_NUM = 100
 # 閾値
 threshold = 0.05
 WRITE_CSV_FILE = "TrainSet.csv"
-SAVE_AUDIO_FOLDER = "./data/TrainingData"
+SAVE_AUDIO_FOLDER = "./data"
 
 
 # 入力チャネル
