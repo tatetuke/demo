@@ -77,8 +77,7 @@ if __name__ == '__main__':
         LABLE = int(input())
         print(type(LABEL))
         if LABEL in [int(0),int(1),int(2),int(3)]:
-            break
-        if LABEL==0:
+            print("a")
             break
         print("0,1,2,3以外の値が入力されました。")
         print("入力するラベルの値は「0,1,2,3」のいずれかです。")
