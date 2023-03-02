@@ -73,14 +73,14 @@ if __name__ == '__main__':
     (audio, stream) = audiostart(CHANNEL)
     cnt = 0
     print("収集する学習データのラベルを、0,1,2,3の中から入力して下ださい。")
-    while LABEL == -INF:
+    while True:
         LABLE = int(input())
         print(type(LABEL))
-        if not (LABEL in [int(0),int(1),int(2),int(3)]):
-            print("0,1,2,3以外の値が入力されました。")
-            print("入力するラベルの値は「0,1,2,3」のいずれかです。")
-            LABEL=-INF
-            print("再入力して下さい。")
+        if LABEL in [int(0),int(1),int(2),int(3)]:
+            break
+        print("0,1,2,3以外の値が入力されました。")
+        print("入力するラベルの値は「0,1,2,3」のいずれかです。")
+        print("再入力して下さい。")
     
     print("CLASS_LABEL:",LABEL)
 
