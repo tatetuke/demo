@@ -72,10 +72,10 @@ def max_vol(data):
 if __name__ == '__main__':
     (audio, stream) = audiostart(CHANNEL)
     cnt = 0
-    print("ラベルを入力して下ださい")
+    print("収集する学習データのラベルを入力して下ださい")
     t = -1
     while (t == -1):
-        t = input()
+        t = int(input())
     print("CLASS_LABEL:",LABEL)
 
     while True:
