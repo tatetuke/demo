@@ -182,6 +182,7 @@ if __name__ == '__main__':
                     running_loss = 0.0
 
         torch.save(net.state_dict(), NET_PATH)
+        print("学習完了")
 
     else : 
         print("Load NetWork")
