@@ -74,7 +74,13 @@ if __name__ == '__main__':
     cnt = 0
     print("収集する学習データのラベルを、0,1,2,3の中から入力して下ださい。")
     while True:
-        t = int(input())
+        try:
+            t = int(input())
+        except:
+            print("何も入力されていません。")
+            print("収集する学習データのラベルを、0,1,2,3の中から再度入力して下ださい。")
+            continue
+            
         if t in [int(0),int(1),int(2),int(3)]:
             LABEL =t
             break
