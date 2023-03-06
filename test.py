@@ -137,12 +137,9 @@ if __name__ == '__main__':
     net.load_state_dict(torch.load(NET_PATH))
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     net.to(device)
+    
+    print("準備完了")
 
-    # 入力待ち
-    print("準備完了:マイクを接続して下さい ")
-    t = ""
-    while (t != "q"):
-        t = input()
 
     # リアルタイムで録音して識別
     (audio, stream) = audiostart(CHANNEL)
@@ -161,7 +158,7 @@ if __name__ == '__main__':
     #---------
     
     
-            print("録音開始")
+            print("打音検知")
             # 音データを入れる配列を初期化
             all = []
             all.append(rt_data)
@@ -231,7 +228,7 @@ if __name__ == '__main__':
                 # cv2.imshow('test', im)
                 # cv2.waitKey()
                 # cv2.destroyAllWindows()
-                print("音の再生開始")
+                print("楽器音の再生")
                 file = wave.open(MUSIC_FILES[predicted[0]], mode='rb')
                 p = pyaudio.PyAudio() #pyaudioのインスタンス化
                 streamPlay = p.open(

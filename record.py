@@ -135,5 +135,5 @@ if __name__ == '__main__':
 
         except KeyboardInterrupt:
             break
-
+    print("サンプリング終了")
     audiostop(audio, stream)
